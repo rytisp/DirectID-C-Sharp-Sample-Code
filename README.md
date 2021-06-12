@@ -3,7 +3,7 @@ This project demonstrates the  method used to implement the widget in C#.
 
 ### Pre requisites
 
-Visual Studio 2013 
+Visual Studio 2019 
 
 
 ##Building
