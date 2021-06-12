@@ -1,0 +1,122 @@
+﻿@model ExampleSetup.Models.CredentialsModel
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <title>DirectID C# Example</title>
+
+    <!-- Bootstrap and Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700,800,300' rel='stylesheet' type='text/css' />
+
+    <!-- Custom Style -->
+    <style>
+        html,
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            color: #222;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #page-wrapper {
+            position: relative;
+            height: auto!important;
+            min-height: 100%;
+        }
+        
+        #main {
+            padding-bottom: 50px;
+        }
+        
+        #widget {
+            border: 1px #ccc solid;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px #e4e4e4;
+            padding: 15px;
+        }
+        
+        #footer {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            font-size: 0.75em;
+            text-align: center;
+        }
+        
+        input.form-control {
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-wrapper">
+
+        <header id="header" class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="https://direct.id"><img src="~/Content/img/DirectID.png" />
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main id="main" class="container">
+            <header class="row">
+                <div id="form-header" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+                    <h1>Setup Connection to Direct ID</h1>
+                    <legend>Connection details provided by Direct ID</legend>
+                </div>
+            </header>
+            <div class="row">
+                <div id="form" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+                    @using (Html.BeginForm("Connect", "Home")){
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ClientID) @Html.TextBoxFor(m => m.ClientID, new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SecretKey) @Html.TextBoxFor(m => m.SecretKey, new {@class="form-control"})
+                    </div>
+                    <hr/>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserSessionEndpoint) @Html.TextBoxFor(m => m.UserSessionEndpoint, new {@class = "form-control"})
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.IndividualSummaryEndpoint) @Html.TextBoxFor(m => m.IndividualSummaryEndpoint, new { @class = "form-control" })
+                        </div>
+                        <hr/>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FullCDNPath) @Html.TextBoxFor(m => m.FullCDNPath, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ResourceID) @Html.TextBoxFor(m => m.ResourceID, new {@class="form-control"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Authority) @Html.TextBoxFor(m => m.Authority, new {@class="form-control"})
+                    </div>
+                    <button type="submit" value="Setup Connection" class="btn btn-primary pull-right"> Setup Connection </button>
+                    }
+                </div>
+            </div>
+        </main>
+
+        <footer id="footer" class="container">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+                    DirectID is provided by miiCard Limited | Edinburgh | London | New York
+                    <br/> US +1 302 760 9130 | UK +44 (0)845 119 3333 | e: info@directid.co | &copy; miiCard&reg; | All rights reserved 2014 | Registered in Scotland SC400459
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

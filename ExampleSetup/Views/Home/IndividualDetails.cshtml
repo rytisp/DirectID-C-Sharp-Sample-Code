@@ -1,0 +1,187 @@
+﻿@model ExampleSetup.Models.IndividualDetails
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <title>DirectID C# Example</title>
+
+    <!-- Bootstrap and Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700,800,300' rel='stylesheet' type='text/css' />
+
+    <!-- Custom Style -->
+    <style>
+        html,
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            color: #222;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #page-wrapper {
+            position: relative;
+            height: auto !important;
+            min-height: 100%;
+        }
+
+        #main {
+            padding-bottom: 50px;
+        }
+
+        #footer {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            font-size: 0.75em;
+            text-align: center;
+        }
+    </style>
+
+    <link href="http://direct.id/Media/Default/Images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+<div id="page-wrapper">
+    
+    <header id="header" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="http://direct.id">
+                    <img src="~/Content/img/DirectID.png" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <header class="row">
+            <div id="widget-header" class="col-xs-12 col-xs-offset-1 col-sm-12 col-sm-offset-1">
+                <legend>Individual Details</legend>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-1 col-sm-12 col-sm-offset-1">
+                <h1>Individual Details:</h1>
+                <br/>
+                <table class="table table-hover">
+                    <tr>
+                        <td>Reference</td>
+                        <td>@Model.Reference</td>
+                    </tr>
+                    <tr>
+                        <td>Provider</td>
+                        <td>@Model.Provider</td>
+                    </tr>
+                </table>
+                <br/>
+                @foreach (ExampleSetup.Models.AccountDetails account in Model.Accounts)
+                {
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+                        <h1>Account Details:</h1>
+                        <br/>
+                        <table class="table table-hover">
+                            <tr>
+                                <td>Account Name</td>
+                                <td>@account.AccountName</td>
+                            </tr>
+                            <tr>
+                                <td>Account Holder</td>
+                                <td>@account.AccountHolder</td>
+                            </tr>
+                            <tr>
+                                <td>Account Type</td>
+                                <td>@account.AccountType</td>
+                            </tr>
+                            <tr>
+                                <td>Activity Available From</td>
+                                <td>@account.ActivityAvailableFrom</td>
+                            </tr>
+                            <tr>
+                                <td>Account Number</td>
+                                <td>@account.AccountNumber</td>
+                            </tr>
+                            <tr>
+                                <td>Sort Code</td>
+                                <td>@account.SortCode</td>
+                            </tr>
+                            <tr>
+                                <td>Balance</td>
+                                <td>@account.Balance</td>
+                            </tr>
+                            <tr>
+                                <td>Balance Formatted</td>
+                                <td>@account.BalanceFormatted</td>
+                            </tr>
+                            <tr>
+                                <td>Opening Balance</td>
+                                <td>@account.OpeningBalance</td>
+                            </tr>
+                            <tr>
+                                <td>Opening Balance Formatted</td>
+                                <td>@account.OpeningBalanceFormatted</td>
+                            </tr>
+                            <tr>
+                                <td>Currency Code</td>
+                                <td>@account.CurrencyCode</td>
+                            </tr>
+                            <tr>
+                                <td>Verified On</td>
+                                <td>@account.VerifiedOn</td>
+                            </tr>
+                        </table>
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-1">
+                            <h1>Transactions:</h1>
+                            <br/>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>Description</td>
+                                    <td>Amount</td>
+                                    <td>Type</td>
+                                    <td>Balance</td>
+                                    <td>Category</td>
+                                    <td>CategoryId</td>
+                                    <td>CategoryType</td>
+                                    <td>CategorizationKeyword</td>
+                                </tr>
+                                </thead>
+                                @foreach (ExampleSetup.Models.Transaction transaction in account.Transactions)
+                                {
+                                    <tr>
+                                        <td>@transaction.Date</td>
+                                        <td>@transaction.Description</td>
+                                        <td>@transaction.Amount</td>
+                                        <td>@transaction.Type</td>
+                                        <td>@transaction.Balance</td>
+                                        <td>@transaction.Category</td>
+                                        <td>@transaction.CategoryId</td>
+                                        <td>@transaction.CategoryType</td>
+                                        <td>@transaction.CategorizationKeyword</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer" class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+                DirectID is provided by miiCard Limited | Edinburgh | London | New York
+                <br/> US +1 302 760 9130 | UK +44 (0)845 119 3333 | e: info@directid.co | &copy; miiCard&reg; | All rights reserved 2014 | Registered in Scotland SC400459
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
